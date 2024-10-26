@@ -9,8 +9,10 @@ interface GraficoProps {
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
 
+// Ajustamos la función de formato
 const formatoGuaranies = (valor: number) => {
-  return `Gs ${(valor / 1000000).toFixed(0)}M`;
+  if (valor === 0) return 'Gs 0';
+  return `Gs ${valor}`;
 };
 
 const Grafico: React.FC<GraficoProps> = ({ titulo, tipo, data }) => {
@@ -22,8 +24,15 @@ const Grafico: React.FC<GraficoProps> = ({ titulo, tipo, data }) => {
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="mes" />
-            <YAxis tickFormatter={formatoGuaranies} />
-            <Tooltip formatter={formatoGuaranies} />
+
+             {/* Aseguramos que el eje Y tenga el formato correcto */}
+             <YAxis tickFormatter={(value: number) => formatoGuaranies(value)} />
+            
+            {/* El tooltip también debe formatear correctamente los valores */}
+            <Tooltip formatter={(value: number) => `Gs ${value.toLocaleString()}`} />
+
+            {/* <YAxis tickFormatter={formatoGuaranies} />
+            <Tooltip formatter={formatoGuaranies} /> */}
             <Legend />
             <Bar dataKey="ingresos" fill="#8884d8" name="Ingresos" />
             <Bar dataKey="egresos" fill="#82ca9d" name="Gastos" />
