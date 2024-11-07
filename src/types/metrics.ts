@@ -16,27 +16,38 @@ export const MetricsSchema = z.object({
       cantidad: z.number(),
     })
   ),
+  pagos_pendientes: z.array(
+    z.object({
+      monto_total: z.number(),
+      monto_pagado: z.number(),
+      monto_pendiente: z.number()
+    })
+  ),
+  proveedores_activos: z.object({
+    proveedores: z.number()
+  }),
+  stock_productos: z.number()
 });
 
 
-export const MetricsAdicionales = z.object({
-  kpis_adicionales: z.object({
-    proveedores_activos: z.number(),
-    productos_en_stock: z.number(),
-    roi: z.number(),
-    pagos_pendientes: z.number(),
-  }),
-})
+// export const MetricsAdicionales = z.object({
+//   kpis_adicionales: z.object({
+//     proveedores_activos: z.number(),
+//     productos_en_stock: z.number(),
+//     roi: z.number(),
+//     pagos_pendientes: z.number(),
+//   }),
+// })
 
 export type Metrics = z.infer<typeof MetricsSchema>;
-export type MetricsAdicionales = z.infer<typeof MetricsAdicionales>;
+// export type MetricsAdicionales = z.infer<typeof MetricsAdicionales>;
 
 
-export const mockMetrics: MetricsAdicionales = {
-  kpis_adicionales: {
-    proveedores_activos: 45,
-    productos_en_stock: 1200,
-    roi: 32.5,
-    pagos_pendientes: 75000,
-  }
-};
+// export const mockMetrics: MetricsAdicionales = {
+//   kpis_adicionales: {
+//     proveedores_activos: 45,
+//     productos_en_stock: 1200,
+//     roi: 32.5,
+//     pagos_pendientes: 75000,
+//   }
+// };

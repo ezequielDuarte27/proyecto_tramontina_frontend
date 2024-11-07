@@ -5,7 +5,7 @@ import TarjetaKPI from './components/TarjetaKPI';
 import { MetricCard } from './components/MetricCard';
 import Grafico from './components/Grafico';
 import { fetchMetrics } from './services/api';
-import { Metrics, mockMetrics } from './types/metrics';
+import { Metrics } from './types/metrics';
 
 function App() {
   const [metrics, setMetrics] = useState<Metrics | null>(null);
@@ -45,15 +45,15 @@ function App() {
         </div>
 
         {/* KPIs Adicionales */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <MetricCard
             title="Proveedores Activos"
-            value={mockMetrics.kpis_adicionales.proveedores_activos}
+            value={metrics.proveedores_activos.proveedores}
             icon={<Users className="text-indigo-600" />}
           />
           <MetricCard
             title="Productos en Stock"
-            value={mockMetrics.kpis_adicionales.productos_en_stock}
+            value={metrics.stock_productos}
             icon={<Boxes className="text-cyan-600" />}
           />
           {/* <MetricCard
@@ -63,7 +63,7 @@ function App() {
           /> */}
           <MetricCard
             title="Pagos Pendientes"
-            value={`Gs ${mockMetrics.kpis_adicionales.pagos_pendientes.toLocaleString()}`}
+            value={`Gs ${metrics.pagos_pendientes[0].monto_pendiente.toLocaleString()}`}
             icon={<AlertCircle className="text-red-600" />}
           />
         </div>
