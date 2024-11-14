@@ -48,7 +48,7 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <MetricCard
             title="Proveedores Activos"
-            value={metrics.proveedores_activos.proveedores}
+            value={metrics.proveedores_activos}
             icon={<Users className="text-indigo-600" />}
           />
           <MetricCard
@@ -63,7 +63,7 @@ function App() {
           /> */}
           <MetricCard
             title="Pagos Pendientes"
-            value={`Gs ${metrics.pagos_pendientes[0].monto_pendiente.toLocaleString()}`}
+            value={`Gs ${metrics.pagos_pendientes}`}
             icon={<AlertCircle className="text-red-600" />}
           />
         </div>

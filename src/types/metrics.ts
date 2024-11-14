@@ -16,16 +16,8 @@ export const MetricsSchema = z.object({
       cantidad: z.number(),
     })
   ),
-  pagos_pendientes: z.array(
-    z.object({
-      monto_total: z.number(),
-      monto_pagado: z.number(),
-      monto_pendiente: z.number()
-    })
-  ),
-  proveedores_activos: z.object({
-    proveedores: z.number()
-  }),
+  pagos_pendientes: z.number(),
+  proveedores_activos: z.number(),
   stock_productos: z.number()
 });
 
