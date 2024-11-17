@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { BarChart3, DollarSign, TrendingUp, ShoppingCart, Users, Boxes, LineChart, AlertCircle } from 'lucide-react';
+import { BarChart3, DollarSign, TrendingUp, ShoppingCart, Users, Boxes, AlertCircle } from 'lucide-react';
 import Encabezado from './components/Encabezado';
 import TarjetaKPI from './components/TarjetaKPI';
 import { MetricCard } from './components/MetricCard';
 import Grafico from './components/Grafico';
-import { fetchMetrics } from './services/api';
+import { fetchMetrics, updateTasaCrecimiento } from './services/api';
 import { Metrics, validateMetrics } from './types/metrics';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
   const loadMetrics = async () => {
     setLoading(true); // Activar indicador de carga
     try {
+      await updateTasaCrecimiento(); // Llamar al nuevo endpoint antes de cargar métricas
       const data = await fetchMetrics();
       const validatedMetrics = validateMetrics(data); // Validar y aplicar valores predeterminados
       setMetrics(validatedMetrics);
