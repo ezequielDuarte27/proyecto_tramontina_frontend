@@ -22,15 +22,6 @@ export const MetricsSchema = z.object({
 });
 
 
-// export const MetricsAdicionales = z.object({
-//   kpis_adicionales: z.object({
-//     proveedores_activos: z.number(),
-//     productos_en_stock: z.number(),
-//     roi: z.number(),
-//     pagos_pendientes: z.number(),
-//   }),
-// })
-
 export type Metrics = z.infer<typeof MetricsSchema>;
 // export type MetricsAdicionales = z.infer<typeof MetricsAdicionales>;
 
@@ -38,13 +29,3 @@ export type Metrics = z.infer<typeof MetricsSchema>;
 export const validateMetrics = (data: unknown): Metrics => {
   return MetricsSchema.parse(data); // Esto asigna valores predeterminados a los campos faltantes
 };
-
-
-// export const mockMetrics: MetricsAdicionales = {
-//   kpis_adicionales: {
-//     proveedores_activos: 45,
-//     productos_en_stock: 1200,
-//     roi: 32.5,
-//     pagos_pendientes: 75000,
-//   }
-// };
